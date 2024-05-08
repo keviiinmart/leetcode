@@ -1,0 +1,22 @@
+#80. Remove Duplicates from Sorted Array II
+class Solution:
+    def removeDuplicates(self, nums: List[int]) -> int:
+        mylist = []
+        count = 0
+        prev = None
+        for item in nums:
+            if item == prev:
+                if count >= 2:
+                    prev = item
+                else:
+                    mylist.append(item)
+                    count += 1
+                    prev = item
+            else:
+                count = 1
+                mylist.append(item)
+                prev = item
+        nums.clear()
+        nums.extend(mylist)
+        print(nums)
+        return len(nums)
